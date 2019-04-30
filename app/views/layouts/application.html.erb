@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" integrity="sha256-8B1OaG0zT7uYA572S2xOxWACq9NXYPQ+U5kHPV1bJN4=" crossorigin="anonymous" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,39 +29,47 @@
     
     <nav class="navbar is-info">
       <div class="navbar-brand">
-      <%= link_to root_path, class: "navbar-item" do %>
-        <h1 class="title is-5">ChatLn</h1>
-      <% end %>
-      <div class="navbar-burger burger" data-target="navbarExample">
+        <%= link_to root_path, class: "navbar-item" do %>
+          <h1 class="title is-5">ChatLn</h1>
+        <% end %>
+        <div class="navbar-burger burger" data-target="navbarExample">
           <span></span>
           <span></span>
-          <span></span>
+            <span></span>
+        </div>
       </div>
-     </div>
 
       <div id="navbarExample" class="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
-          <div class="field is-grouped">
-            <p class="control">
-              <%= link_to 'Ajouter Un Cours', root_path, class: "button is-info is-inverted" %>
-            </p>
-            <% if user_signed_in? %>
+            <div class="field is-grouped">
               <p class="control">
-                <!-- remplacez email par fullname/!-->
-                <%= link_to current_user.email, edit_user_registration_path, class: "button is-info" %>
-              </p>
-              <p>
-                <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class:"button is-info" %>
-              </p>
-            <% else %>
-            <p class="control">
-              <%= link_to 'Se Connecter', new_user_session_path, class: "button is-info" %>
+                <!--/!-->
+              <%= link_to 'Ajouter un cours', root_path, class: "button is-info is-inverted" %>
             </p>
             <p class="control">
-              <%= link_to 'Créer Un Compte', new_user_registration_path, class: "button is-info" %>
+                <!--/ par les eapprenants!-->
+              <%= link_to 'Ajouter un sujet', root_path, class: "button is-info is-inverted is-rounded" %>
             </p>
-            <% end %>
+              <% if user_signed_in? %>
+              
+                <p class="control">
+                   
+                  <%= link_to current_user.Nom_Complet, edit_user_registration_path, class: "button is-info" %>
+                </p>
+                
+                <p>
+                  <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class:"button is-info" %>
+                </p>
+              <% else %>
+                <p class="control">
+                  <%= link_to 'Se Connecter', new_user_session_path, class: "button is-info" %>
+                </p>
+               
+                <p class="control">
+                  <%= link_to 'Créer un Compte', new_user_registration_path, class: "button is-info" %>
+                </p>
+              <% end %>
             </div>
           </div>
         </div>

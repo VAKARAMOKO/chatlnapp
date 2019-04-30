@@ -36,11 +36,11 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 # builder form
 gem 'simple_form', '~> 4.1'
 #uploader file
-#gem 'refile', '~> 0.6.2'
+gem 'refile'
 # editor
-#gem 'summernote-rails', '~> 0.8.10.0'
+gem 'summernote-rails', '~> 0.8.10.0'
 #loading content
-#gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 #stylisation
 gem 'bulma', '~> 0.1.0'
 # stylisation
