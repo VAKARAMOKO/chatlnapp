@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
@@ -35,8 +35,11 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 #gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 # builder form
 gem 'simple_form', '~> 4.1'
-#uploader file
-gem 'refile'
+# reconfigurez apres pour utiliser seulement que carrierwave
+gem "refile", require: "refile/rails"
+
+#carrierwave
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 # editor
 gem 'summernote-rails', '~> 0.8.10.0'
 #loading content

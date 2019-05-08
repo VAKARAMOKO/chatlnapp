@@ -44,30 +44,30 @@
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
-                <!--/!-->
-              <%= link_to 'Ajouter un cours', root_path, class: "button is-info is-inverted" %>
+                <!--/for prof!-->
+              <%= link_to 'Ajouter un cours', new_course_path, class: "button is-info is-inverted is-rounded" %>
             </p>
             <p class="control">
-                <!--/ par les eapprenants!-->
-              <%= link_to 'Ajouter un sujet', root_path, class: "button is-info is-inverted is-rounded" %>
+                <!--/ redict_to profile with content or course buy or create!-->
+              <%= link_to 'Biblio Tech', root_path, class: "button is-info is-inverted is-rounded" %>
             </p>
               <% if user_signed_in? %>
               
                 <p class="control">
                    
-                  <%= link_to current_user.Nom_Complet, edit_user_registration_path, class: "button is-info" %>
+                  <%= link_to current_user.Nom_Complet, edit_user_registration_path, class: "button is-info is-inverted" %>
                 </p>
                 
                 <p>
-                  <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class:"button is-info" %>
+                  <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class: "button is-info is-inverted" %>
                 </p>
               <% else %>
                 <p class="control">
-                  <%= link_to 'Se Connecter', new_user_session_path, class: "button is-info" %>
+                  <%= link_to 'Se Connecter', new_user_session_path, class: "button is-info is-inverted" %>
                 </p>
                
                 <p class="control">
-                  <%= link_to 'Créer un Compte', new_user_registration_path, class: "button is-info" %>
+                  <%= link_to 'Créer un Compte', new_user_registration_path, class: "button is-info is-inverted" %>
                 </p>
               <% end %>
             </div>
