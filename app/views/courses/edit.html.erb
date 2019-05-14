@@ -1,5 +1,12 @@
 <h1>Editing Course</h1>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#summernote').summernote();
+  });
+</script>
+
+
 <%= render 'form', course: @course %>
 
 <%= link_to 'Show', @course %> |

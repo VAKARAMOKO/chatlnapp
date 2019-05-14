@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    
     @courses = Course.all.order("created_at DESC")
     @course = Course.new
   end
@@ -29,7 +30,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
 
   def create
-    @course = current_user.courses.build(course_params)
+    @course = current_user.course.build(course_params)
 
     respond_to do |format|
       if @course.save
@@ -74,6 +75,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:titre, :corps, :NIVEAUX)
+      params.require(:course).permit(:titre, :corps, :Niveau_Cours, :user_id)
     end
 end
