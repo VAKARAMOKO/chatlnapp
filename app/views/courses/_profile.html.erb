@@ -10,7 +10,8 @@
 				</div>
 				<div class="media-content">
 					<div class="content">
-						<p><strong><%= render 'info_users' %></strong><br /></p>
+						<p><strong><%= current_user.Nom_Complet %></strong><br /></p>
+						<small><%= current_user.bio %></small><br/>
 					</div>
 				</div>
 			</article>
@@ -26,25 +27,16 @@
 				<div class="level-item has-centered-text">
 					<div>
 						<p class="heading">Cours</p>
-						<p class="title is-6">123</p>
+						<p class="title is-6"><%= current_user.course.count %></p>
 					</div>
 				</div>
-					<div class="level-item has-centered-text">
-						<div>
-							<p class="heading"><i class="fas fa-eye">Vues</i></p>
-							<p class="title is-6"><%= current_user.questions.count %></p>
-						</div>
-					</div>
-
-
-
-
-
 			</div>
 		</div>
 		
 
 
-	</nav>
+	</nav>	
+		
+	<%= render 'trend_courses' %>
 </div>
 

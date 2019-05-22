@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- root to:"home#index", :as => :"Accueil"
+ root to:"courses#index"#, :as => :"Accueil"
   resources :courses
   devise_for :users, :controllers => { registrations: 'registrations' }
 

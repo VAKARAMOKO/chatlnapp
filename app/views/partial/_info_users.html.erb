@@ -1,0 +1,10 @@
+
+  	<% if user_id == @questions.question_id || current_user.user_id == @courses.course_id %>
+  		
+		<strong><%= current_user.Nom_Complet %></strong>
+		<small><%= current_user.bio %></small><br/>
+	 <% else %>
+  		<strong><%= @user_name %></strong>		
+	  	<small><%= @user_bio %></small><br/>
+
+  	<% end %>

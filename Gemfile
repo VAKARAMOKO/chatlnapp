@@ -73,6 +73,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
+  gem 'open_gem', '~> 1.5'
 end
 
 group :test do

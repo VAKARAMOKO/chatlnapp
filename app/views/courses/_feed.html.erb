@@ -1,0 +1,60 @@
+<div class="column is-half">
+  <% if user_signed_in? %>
+  <article class="media box">
+    <figure class="media-left">
+      <p class="image is-64x64">
+         <img class="is-rounded" src="https://bulma.io/images/placeholders/is-64x64.png">
+      </p>
+    </figure>
+    <div class="media-content">
+       
+    </div>
+  </article>
+  <% end %>
+  <div class="media-content">
+  <% @courses.each do | course| %>
+    <div class="box">
+      <div class="title">
+        <p><%= course.titre %></p>    
+      </div>
+      <br>
+
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64 is-rounded">       
+            <img class="is-rounded" src="https://bulma.io/images/placeholders/is-64x64.png">
+          </figure>
+          
+            <strong><%= course.user.Nom_Complet %></strong>
+            <small>, <%= course.user.bio %></small><br/>
+        </div>
+
+        <div class="media-content">
+          <div class="content">
+            <div class="content">
+              <%= course.corps %>
+            </div>
+          </div>
+        </div>
+          <!--insert the option to anwser, delete, and other options/!-->
+
+          <% if user_signed_in? && current_user.id == course.user_id %>
+            <nav class="level">
+              <div class="level-left is-mobile is-right">
+                <%= link_to course, class: "level-item" do %>
+                  <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+                <% end %>
+                <%= link_to edit_course_path(course), class: "level-item" do %>
+                  <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <% end %>
+                <%= link_to course, method: :delete, data: { confirm: "Etes-vous sûre de vouloir supprimez ?" } do %>
+                  <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <% end %> 
+              </div>              
+            </nav>
+          <% end %>
+      </article>
+    </div>
+  <% end %>
+</div>
+</div>

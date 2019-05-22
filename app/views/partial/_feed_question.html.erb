@@ -1,0 +1,20 @@
+
+<div class="column is-6 is-vcentered">
+  <% if user_signed_in? %>
+    <article class="media box">
+      <figure class="media-left">
+        <p class="image is-32x32 is-rounded">
+          <img src="https://bulma.io/images/placeholders/32x32.png" alt="" class="is-rounded">
+        </p>
+      </figure>
+        <div class="media-content">
+          
+            <%= render :partial => "questions/form" %>
+        
+        </div>
+        <div class="media-content">
+          <%= render :partial => "courses/form" %>
+        </div>
+    </article>
+  <% end %>  
+</div>
