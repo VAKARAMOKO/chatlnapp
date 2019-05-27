@@ -1,25 +1,30 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   # GET /courses
   # GET /courses.json
   def index
-    
-    @courses = Course.all.order("created_at DESC")
+   
+    @courses = Course.all.order("created_at Desc")
     @course = Course.new
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @user_name =@course.user.Nom_Complet
-    @user_bio = @course.user.bio
+     # Recuperer le niveau du cours et de l'elevepuis retour
+     ## current.user.level == level_course
+     ## Matiere_course == Matiere_selectionne
+
+    def levels
+    end
   end
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = current_user.course.build
   end
 
   # GET /courses/1/edit
@@ -30,31 +35,28 @@ class CoursesController < ApplicationController
   # POST /courses.json
 
   def create
-    @course = current_user.course.build(course_params)
-
-    respond_to do |format|
+    @course = current_user.course.build(course_params)  
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
+        flash[:success] = "Le cours a été bien ajouter"
+        redirect_to root_path
       else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        flash[:alert] = "Votre nouveau cours n'a pas pu être crée !  Veuillez vérifier le formulaire."
+        render :new
+  
+        
       end
-    end
   end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
-    respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
+        flash[:sucess] = "Cours mis à jour"
+        redirect_to root_path
       else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+        flash[:alert] = "Mise à jour échouée..."
+        render :edit
+      end   
   end
 
   # DELETE /courses/1
@@ -75,6 +77,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:titre, :corps, :Niveau_Cours, :user_id)
+      params.require(:course).permit(:titre, :corps, :Niveau_Cours, :Matiere_Course, :user_id)
     end
 end

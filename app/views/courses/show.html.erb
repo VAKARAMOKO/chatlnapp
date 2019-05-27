@@ -7,7 +7,7 @@
 
 <p>
   <strong>Corps:</strong>
-  <%= @course.corps %>
+  <%= sanitize @course.corps %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

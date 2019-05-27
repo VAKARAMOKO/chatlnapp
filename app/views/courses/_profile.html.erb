@@ -1,4 +1,4 @@
-<div class="column is-3  is-vcentered">
+<div class="column is-vcentered">
 	<nav class="panel">
 		<p class="panel-heading">Profile</p>
 		<div class="panel-block">
@@ -10,8 +10,8 @@
 				</div>
 				<div class="media-content">
 					<div class="content">
-						<p><strong><%= current_user.Nom_Complet %></strong><br /></p>
-						<small><%= current_user.bio %></small><br/>
+						<p><%= current_user.Nom_Complet %>, <%= current_user.bio %></p>
+						
 					</div>
 				</div>
 			</article>
@@ -19,15 +19,15 @@
 		<div class="panel-block">
 			<div class="level is-mobile">
 				<div class="level-item has-centered-text">
-					<div>
+					<div has-centered-text>
 						<p class="heading"><i class="fas fa-friends">Amis</i></p>
-						<p class="title is-6"><%= current_user.questions.count %></p>
+						<p class="subtitle is-6 "><%= current_user.questions.count %></p>
 					</div>
 				</div>
 				<div class="level-item has-centered-text">
-					<div>
+					<div has-centered-text>
 						<p class="heading">Cours</p>
-						<p class="title is-6"><%= current_user.course.count %></p>
+						<p class="subtitle is-6 "><%= current_user.course.count %></p>
 					</div>
 				</div>
 			</div>
@@ -36,7 +36,6 @@
 
 
 	</nav>	
-		
-	<%= render 'trend_courses' %>
+	
 </div>
 

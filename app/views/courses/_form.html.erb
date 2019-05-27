@@ -24,7 +24,21 @@
                 </span>
               </div>
             </div>
-          </div>    
+          </div>   
+
+          <div class="field column is-6">
+            <div class="control">
+              <label class="label">Matière :</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= f.input_field :Matiere_Course, collection: Course::MATIERES, prompt: "Selectionne la matère" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-briefcase"></i>
+                </span>
+              </div>
+            </div>
+          </div>   
         </div>
 
         <div class="field">
@@ -38,4 +52,3 @@
     <% end %>
   </div>
 </div>
-
