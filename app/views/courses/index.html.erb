@@ -1,15 +1,15 @@
 <div class="notification">
-    <section class="section ">
-        <div class="container">
-            <div class="columns">
+    <section class="section is-mobile">
+        <div class="container is-centered">
+            
                 <% if user_signed_in?%>        
-                    <%= render 'matieres' %>   
                     <%= render 'feed' %>
-                    <%= render 'follow' %>
                 <% else %>
                      <%= render template: 'home/index' %>
                 <% end %>      
-            </div>
+           
         </div>
     </section>
 </div>
+
+

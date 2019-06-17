@@ -45,7 +45,6 @@ gem 'devise_invitable', '~> 2.0', '>= 2.0.1'# bundle: yet; installation: not yet
 # builder form
 gem 'simple_form', '~> 4.1'
 # reconfigurez apres pour utiliser seulement que carrierwave
-gem "refile", require: "refile/rails" #no implement
 
 #carrierwave
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
