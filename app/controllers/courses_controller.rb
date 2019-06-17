@@ -1,25 +1,23 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
+  before_action :owned_course, only: [:edit, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  #impressionist apres a 
 
   # GET /courses
   # GET /courses.json
   def index
-   
-    @courses = Course.all.order("created_at Desc")
+
+   # @comment = @course.comments.order('created_at asc')
+    @courses = Course.all.order("created_at Desc").page params[:page]
     @course = Course.new
+
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
-     # Recuperer le niveau du cours et de l'elevepuis retour
-     ## current.user.level == level_course
-     ## Matiere_course == Matiere_selectionne
-
-    def levels
-    end
+      #@avatar_course_owner = course.user.avatar   
   end
 
   # GET /courses/new
@@ -30,7 +28,8 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
   end
-
+  # remove avatar
+  
   # POST /courses
   # POST /courses.json
 
@@ -77,6 +76,13 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:titre, :corps, :Niveau_Cours, :Matiere_Course, :user_id)
+      params.require(:course).permit(:title, :description, :corps, :level_course, :material_course, :user_id, :avatar)
     end
+
+    def owned_course
+      unless current_user == @courses.user
+        flash[:alert] = "Cette action n'est pas possible!"
+        redirect_to root_path
+    end
+end
 end

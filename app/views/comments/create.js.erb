@@ -1,0 +1,8 @@
+$('#comment_content_<%= @course.id %>').val('')
+$('#comment_content_<%= @course.id %>').blur();
+Append.comment_count += 1
+$(Append.id).attr('data-value', Append.comment_count);
+if (Append.comment || Append.open ){ $('#comments_<%= @course.id %>').append("<%= j render 'comments/comment', course: @course, comment: @comment %>"); }
+else if ((Append.comment && Append.open) === false && Append.link === true) { 
+}
+else if ((Append.comment && Append.open && Append.link) === false) { $('#more_comments_<%= @course.id %>').html("view all <%= @course.comments.count %> comments"); }

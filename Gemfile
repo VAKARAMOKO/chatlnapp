@@ -38,28 +38,33 @@ gem 'jquery-turbolinks'
 gem 'mini_magick', '~> 4.8'
 # #membership
 gem 'devise', '~> 4.6', '>= 4.6.2'
+#membership invitable
+gem 'devise_invitable', '~> 2.0', '>= 2.0.1'# bundle: yet; installation: not yet
 #url  builder for SEO
-#gem 'friendly_id', '~> 5.2', '>= 5.2.5'
+#gem 'friendly_id', '~> 5.2', '>= 5.2.5' no implement
 # builder form
 gem 'simple_form', '~> 4.1'
 # reconfigurez apres pour utiliser seulement que carrierwave
-gem "refile", require: "refile/rails"
+gem "refile", require: "refile/rails" #no implement
 
 #carrierwave
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+#vote
+gem 'acts_as_votable', '~> 0.12.0'#no implement
+#vue
+gem 'impressionist', '~> 1.6', '>= 1.6.1'#no implement
+#time ago
+gem 'time_ago_in_words', '~> 0.1.1'#no implement
 # editor
 gem 'summernote-rails', '~> 0.8.10.0'
 #loading content
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
-#stylisation
-gem 'bulma', '~> 0.1.0'
-# stylisation
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails'
-
-# 
-# 
-# 
+#select country
+gem 'country_select', '~> 4.0'
+#stylisation
+gem 'bulma-rails', '~> 0.7.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

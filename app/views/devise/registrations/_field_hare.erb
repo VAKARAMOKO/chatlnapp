@@ -1,0 +1,66 @@
+/******** les champs en reserve*****/
+
+
+
+          <div class="field">
+            <div class="control">
+              <%= f.label :avatar do %>
+                <%= f.file_field :avatar %>
+                <%= f.hidden_field :avatar_cache %> 
+              <% end %>
+            </div>
+          </div>
+
+
+
+
+js
+$.ready(function(){
+
+ $('input:radio[name="choice"]').change(function(){
+       if ($(this).is(':checked')) {
+         $('.atgc_fields').removeClass('hidden');
+       }
+       else{
+         $('.atgc_fields').addClass('hidden');
+         $(".atgc_fields input[type=text]").each(function() {
+         $(this).val(''); //reset the values of input fields (if any)
+         });
+        }
+     });
+
+})
+
+css
+.hidden{
+ display:none;
+}
+
+htmml.erb
+
+<div class="atgc_fields hidden">
+  <%= f.input .....%>
+  ....
+  ....
+   Or 
+  <%= input_tag ...%>
+   ...
+  ...
+</div>
+
+
+
+def avatar_for(user, width = '', height = '')
+      @avatar = user.avatar
+      if @avatar.present?
+          @avatar_user = image_tag("default-avatar.png", alt: user.username, width: width, height: height)
+      else
+          @avatar_user = image_tag(@avatar.url, alt: user.username, width: width, height: height)
+      end
+        return @avatar_user
+  end
+  def current_user
+    
+  end
+
+

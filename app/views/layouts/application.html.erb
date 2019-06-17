@@ -4,13 +4,13 @@
     <title>Chatln</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" integrity="sha256-8B1OaG0zT7uYA572S2xOxWACq9NXYPQ+U5kHPV1bJN4=" crossorigin="anonymous" />
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+   
 
   <body>
     <!-- system de notification devise/!-->
@@ -26,11 +26,11 @@
     <% end %>
 
 
-    
-    <nav class="navbar is-info">
+  
+    <nav class="navbar is-info is-fluid is-fixed-top">
       <div class="navbar-brand">
-        <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-5">ChatLn</h1>
+        <%= link_to root_path, class: "navbar-item is-inverted is-rounded" do %>
+          <h1 class="title is-inverted is-5">ChatLn</h1>
         <% end %>
         <div class="navbar-burger burger" data-target="navbarExample">
           <span></span>
@@ -43,24 +43,25 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
+              <% if user_signed_in? %>
               <p class="control">
                 <!--/for prof!-->
-              <%= link_to 'Ajouter un cours', new_course_path, class: "button is-info is-inverted is-rounded" %>
-            </p>
+                <%= link_to 'Ajouter un Doc', new_course_path, class: "button   is-rounded" %>
+              </p>
             <p class="control">
                 <!--/ redict_to profile with content or course buy or create!-->
-              <%= link_to 'Biblio Tech', root_path, class: "button is-info is-inverted is-rounded" %>
+              <%= link_to 'Question-Doc',new_question_path, class: "button is-rounded" %>
             </p>
+              <% end %>
               <% if user_signed_in? %>
-              
-                <p class="control">
-                   
-                  <%= link_to current_user.Nom_Complet, edit_user_registration_path, class: "button is-info is-inverted" %>
-                </p>
-                
-                <p>
-                  <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class: "button is-info is-inverted" %>
-                </p>
+              <span class="control is-rounded">                
+                <%= link_to image_tag(current_user.avatar.url(:thumb), alt:current_user.username), edit_user_registration_path, class: "button" %>
+              </span>
+              <p class="control">
+                <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class: "button is-info is-inverted" %>      
+              </p>           
+                                             
+                            
               <% else %>
                 <p class="control">
                   <%= link_to 'Se Connecter', new_user_session_path, class: "button is-info is-inverted" %>
@@ -75,12 +76,12 @@
         </div>
       </div>
     </nav>
+    <hr><!--un petit espace apres la navbar: pas propre mais ca fait le travail actuellement /!-->
+  
 
     <%= yield %>
   </body>
 
   <footer>
-      
-      
-    </footer>
+  </footer>
 </html>

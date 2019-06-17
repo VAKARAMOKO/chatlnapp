@@ -1,68 +1,137 @@
-<section class="section">
+<div class="section">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-4">
+      <div class="column is-4">      
+        <h2 class="title is-3">Personnaliser Votre compte</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+           <%= f.error_notification %>  
+            
+          <div class="field">
+            <div class="control"><!-- un liste ou /!-->
+              <%= f.input :city, required: false, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, label: "Ville :", error:"la ville de votre école", placeholder:"la ville de l'école :", autofocus:true %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control"><!-- un liste ou /!-->
+              <%= f.input :school, required: false, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, label: "Nom école", error:"Entrez le nom de votre école", placeholder:"Votre école:" %>
+            </div>
+          </div>          
+
+          <p>
+            <% if current_user.status==0 %>
+                <div class="control">
+                  <label class="label">Niveau :</label>
+                  <div class="control has-icons-left">
+                    <span class="select">
+                      <%= f.input_field :level_class, collection: User::LEVEL, prompt: "Niveau de la classe" %>
+                    </span>
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-briefcase"></i>
+                    </span>
+                  </div>
+                </div>                
+            <% else %>
+            <div class="field column">
+            <div class="control">
+              <label class="label">Matière enseignée:</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= f.input_field :matiere_prof, collection: User::MATIERE, prompt: "Selectionne la matère", label:"Selectionne la matiere" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-briefcase"></i>
+                </span>
+              </div>
+            </div>
+          </div>   
+            <% end %>
+          </p> 
+          <br>      
+          
+          <div class="columns">
+            <div class="field column">
+              <div class="control"><!-- un liste ou /!-->
+                <%= f.input :status, as: :radio_buttons, collection: [['0', 'Eleve'], ['1', 'Prof']], label_method: :second, value_method: :first, selected: 0, label:"Status :" %> 
+              </div>
+            </div>
+
+            <div class="field column">
+              <div class="control"><!-- un liste ou /!-->
+                <%= f.input :genre, as: :radio_buttons, collection: [['0', 'Femme'], ['1', 'Homme']], label_method: :second, value_method: :first,selected: 0,  label:'Genre :' %>
+              </div>
+            </div>
+          </div>  
         
-      <h2 class="title is-2">Edit <%= resource_name.to_s.humanize %></h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= f.error_notification %>
+            <div class="field column">
+              <div class="control is-2">
+                <% if current_user.avatar.present? %>
+                  <div class="media">
+                    <figure class="image is-25x25 is-rounded">
+                      <%= image_tag(current_user.avatar.url(:thumb))%>          
+                     </figure>
+                  </div>
+                  <br>
+                  <%= f.label :remove_avatar do%>
+                    <%= f.check_box :remove_avatar%>
+                  <% end%> 
+                <% end%>
+                <figure class="image is-25x25 is-rounded">
+               <%= f .input_field :avatar, required: false, input_html:{class: 'input'}, wrapper: false, label_html:{ class:"avatar"} %>                  
+                </figure>
+               <%= f.hidden_field :avatar_cache%>
+              </div>
+            </div>
+          
+          <h2 class="title is-3">Verifier les champs suivants:</h2>
 
           <div class="field">
             <div class="control">
-              <%= f.input :Nom_Complet, required: true, autofocus: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              <%= f.input :username, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, placeholder:"Votre nom complet :" %>
             </div>
           </div>
 
           <div class="field">
             <div class="control">
-              <%= f.input :Telephone, required: true,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              <%= f.input :mobile_number, required: false,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, label:'N° Tel:', placeholder:"N° Téléphone" %>
             </div>
           </div>
 
           <div class="field">
             <div class="control">
-              <%= f.input :email, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              <%= f.input :email, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, label: 'Adresse Email :' %>
             </div>
-          </div>
+          </div>           
           <div class="field">
-      <div class="control">
-        <%= f.attachment_field :profile_image, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>   
-      </div>
-    </div>
-
-          <div class="field">
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-          <% end %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
           </div>
 
           <div class="field">
             <div class="control">
-            <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              <%= f.input :password, autocomplete: "off", hint: "Votre mot de passe pour plus de sécurité", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, placeholder:'Entrez votre mot de passe', label:'Mot de passe :'  %>
             </div>
           </div>
 
-          <div class="field">
-            <div class="control">
-            <%= f.input :password_confirmation, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-            </div>
-          </div>
 
           <div class="field">
             <div class="control">
-              <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              <%= f.input :current_password, hint: "Mot de passe pour confirmer les modifications", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, label:'Confirmation mot de passe: ' ,placeholder:'retaper votre mot de passe'%>
             </div>
-        </div>
-   
-        <%= f.button :submit, "Completer votre compte", class:"button is-info" %>
-     
+          </div>
+       
+          <%= f.button :submit, "Enregistrer", class:"button is-info" %>       
+          
+
+          <hr />
+          <h3 class="title is-5">Annuler mon compte</h3>
+          <p>Pas content? <%= link_to "Supprimer", registration_path(resource_name), data: { confirm: "Le compte sera supprimer?" }, method: :delete %></p>     
       <% end %>
-
-        <hr />
-        <h3 class="title is-5">Cancel my account</h3>
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-   
+        <br />
+        <%= render "devise/shared/links" %>
       </div>
     </div>
   </div>
-</section>
+</div>
+

@@ -1,16 +1,15 @@
-<section class="section">
- <div class="container">
-    <div class="columns">
-    <% if user_signed_in?%>
-            
-        
-        <%= render 'matieres' %>   
-        <%= render 'feed' %>
-        <%= render 'who-to-follow' %>
-        
-    <% else %>
-      <%= render template: 'home/index' %>
-    <% end %>      
-    </div>
-  </div>
-</section>
+<div class="notification">
+    <section class="section ">
+        <div class="container">
+            <div class="columns">
+                <% if user_signed_in?%>        
+                    <%= render 'matieres' %>   
+                    <%= render 'feed' %>
+                    <%= render 'follow' %>
+                <% else %>
+                     <%= render template: 'home/index' %>
+                <% end %>      
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,9 +1,27 @@
-	<nav class="panel is-3">
+<div class="colmun is-4">
+	<nav class="panel">
 		<p class="panel-heading">Fil Matières</p>
 
-
 		<a class="panel-block">
-			<%= link_to 'Histoire', courses_path(:matiere_course => "Histoire") %>
+			<span class="media-content">
+				<span class="content">
+					<%= link_to 'Histoire', courses_path(:matiere_course => "Histoire") %>
+				</span>
+			</span>
+		</a>
+		<a class="panel-block">
+			<span class="media-content">
+				<span class="content">
+					<%= link_to 'Histoire', courses_path(:matiere_course => "Histoire") %>
+				</span>
+			</span>
+		</a>
+		<a class="panel-block">
+			<span class="media-content">
+				<span class="content">
+					<%= link_to 'Histoire', courses_path(:matiere_course => "Histoire") %>
+				</span>
+			</span>
 		</a>
 		<a class="panel-block">
 			<%= link_to 'Géographie', courses_path(:matiere_course => "Géographie") %>
@@ -45,3 +63,4 @@
 			<%= link_to 'Art Plastique', courses_path(:matiere_course => "Art-Plastique") %>
 		</a>
 	</nav>
+</div>

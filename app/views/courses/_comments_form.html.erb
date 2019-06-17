@@ -1,0 +1,6 @@
+<div class="comment-form col-sm-11">
+ <%= simple_form_for(@comment) do |f| %>
+    <%= f.text_field :content, placeholder: 'Ajouter un commentaire...', class: "comment_content" %>
+  <%= f.submit 'Ajouter un Commentaire', class: 'comment-submit-button is-rounded' %>
+ <% end %>
+</div>

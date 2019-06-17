@@ -6,14 +6,14 @@
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
           <div class="field">
-            <div class="control">
-              <%= f.input :Telephone, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, placeholder:' N° Telephone' %>
+            <div class="control ">
+              <%= f.input :login, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, placeholder:'Nom Complet ou Adresse email', label:"Nom Complet ou Adresse email :" %>
+              
             </div>
           </div>
-
           <div class="field">
             <div class="control">
-            <%= f.input :password, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+            <%= f.input :password, required: false, input_html: { class: "input "}, wrapper: false, label_html: { class: "label" }, placeholder:'Mot de passe', label:'Mot de passe :' %>            
             </div>
           </div>
 

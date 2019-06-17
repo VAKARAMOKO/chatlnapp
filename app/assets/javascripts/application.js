@@ -13,7 +13,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
-//= require codemirror
 //= require summernote
-//= require_tree .
 //= require turbolinks
+// require 'time_ago_in_words'
+//= require_tree .

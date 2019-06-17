@@ -1,14 +1,41 @@
 <p id="notice"><%= notice %></p>
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10">
+      	<div class="subtitle">
+      		<%= @course.title %>
+      	</div>
 
-<p>
-  <strong>Titre:</strong>
-  <%= @course.titre %>
-</p>
+		<article class="media">
+	        <div class="media-left">
+	          <figure class="image">
+	            <%= link_to image_tag(@course.user.avatar.url(:medium), alt:@course.user.username), edit_user_registration_path, class: "button" %>
+	        </div>
+	        <!--infos createur Nom_complet et son bio/!-->
+	        <div class="media-content">
+	          <div class="content">
+	            <% if @course.user.status=='1' %>
+	              <p><%= @course.user.username %>, Professeur au <%= @course.user.school%> de <%= @course.user.city %></p>
+	              <% else %>
+	              <p><%= @course.user.username %>, Elève de <%= @course.user.level_class %> au <%= @course.user.school%> de <%= @course.user.city %></p>
+	              <br>
+	              <small><%= @course.user.bio %></small>
+	             <% end %>  
+	          </div>
+	        </div>
+      	</article>
+      		
+      	<br>
 
-<p>
-  <strong>Corps:</strong>
-  <%= sanitize @course.corps %>
-</p>
+      	<span class="content container">
+      		<span class="box">
+      			<%= sanitize @course.corps %>
+      		</span>
+      	</span>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+	  </div>
+	 
+	</div>
+ </div>
+</div>

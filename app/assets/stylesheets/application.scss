@@ -1,36 +1,64 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
-@import "bulma";
 
-@import "bootstrap";
-@import "summernote-bs4";
-@import "summernote-custom-theme.min";
+/*--- google font---*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,700&display=swap');
 
-// Bootstrap 3
+
+//** Bootstrap 3  **/
 @import "bootstrap";
 @import "font-awesome";
 @import "summernote";
 @import "codemirror";
-@import "codemirror/themes/solarized";
+@import "summernote-bs4";
+@import "summernote-custom-theme.min";
+@import "bulma";
+
+
+/** ----Compoments design---- */
+
+/**@import url("compoments/navbar.scss");/* navbar pas optimiser*/
+/*@import url("compoments/course.css");*/
 
 
 
-.navbar-brand .title {
-	color: white;
-}
+/*model a respecter; mettre compoment du design dans un fichier separé
+/*@import url(compoments/avatar.scss);*/
+/*@import url(compoments/button.scss);*/
+/*@import url(compoments/dropdawn.scss);*/
+/*@import url(compoments/card.scss);*/
+/*@import url(compoments/list.scss);*/
+/*@import url(compoments/banner.scss);*/
+
+
+
+/*** --fonts--- ***/
+body{
+      font-family: 'Open Sans', sans-serif;
+       background-color: #fafafa;
+       font-size: 12;
+      
+    }
+h1,h2,h3{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12;
+            }
+content{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10;
+            }
+.title{
+       font-family: 'Open Sans', sans-serif;
+       font-size: 12;
+       }
+.subtitle{
+          font-family: 'Open Sans', sans-serif;
+          font-style: 12;
+        }
+
+
 
 // round images
 .image {
@@ -51,4 +79,19 @@
   -o-background-size: cover;
   background-size: cover;
 
+}
+/* ## Wrapper and styling for the new and edit views ## */
+
+.form-wrapper {
+  width: 60%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 40px;
+  border: 1px solid #eeefef;
+  border-radius: 3px;
+}
+
+.edit-links {
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
