@@ -57,7 +57,7 @@ gem 'time_ago_in_words', '~> 0.1.1'#no implement
 # editor
 gem 'summernote-rails', '~> 0.8.10.0'
 #loading content
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'kaminari', '~> 1.2'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails'
 #select country
