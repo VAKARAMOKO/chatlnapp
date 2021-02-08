@@ -47,7 +47,7 @@ gem 'simple_form', '~> 4.1'
 # reconfigurez apres pour utiliser seulement que carrierwave
 
 #carrierwave
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 #vote
 gem 'acts_as_votable', '~> 0.12.0'#no implement
 #vue
